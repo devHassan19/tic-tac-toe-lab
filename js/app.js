@@ -42,13 +42,15 @@ const updateBoard = () => {
     }
   })
 }
-const updateMessage = () => {
-  if (winner === false && tie === false) {
-    messageEl.textContent = `${turn} turn `
-  } else if (tie === true) {
+function updateMessage() {
+  if (winner == false && tie == false) {
+    messageEl.textContent = `  turn  ${turn}`
+  } else if (tie == true) {
     messageEl.textContent = ' tie no one won'
-  } else if (winner === true) {
-    messageEl.textContent = `The Winner  is ${turn}`
+  } else if (winner == true) {
+    messageEl.textContent = `The winner is ${turn}`
+  } else {
+    messageEl.textContent = `Your turn ${turn}`
   }
 }
 
@@ -83,7 +85,7 @@ const checkForWinner = () => {
   winningCombos.forEach((win) => {
     const [a, b, c] = win
 
-    if (board[a] != '') {
+    if (board[a] !== '') {
       if (board[a] === board[b] && board[a] === board[c]) {
         winner = true
       }
@@ -101,6 +103,7 @@ const checkForTie = () => {
 }
 const switchPlayerTurn = () => {
   if (winner == true) return
+  turn = turn === 'X' ? 'O' : 'X'
 }
 
 squareEls.forEach((square) => {
