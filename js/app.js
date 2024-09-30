@@ -20,7 +20,7 @@ let tie
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.getElementById('message')
-
+const resetBtnEl = document.getElementById('rest')
 /*-------------------------------- Functions --------------------------------*/
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -106,6 +106,7 @@ const switchPlayerTurn = () => {
   turn = turn === 'X' ? 'O' : 'X'
 }
 
+resetBtnEl.addEventListener('click', init)
 squareEls.forEach((square) => {
   square.addEventListener('click', handleClick)
 })
